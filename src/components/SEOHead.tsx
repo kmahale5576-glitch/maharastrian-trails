@@ -3,21 +3,40 @@ import { useEffect } from 'react';
 interface SEOProps {
   title?: string;
   description?: string;
-  canonicalUrl?: string;
-  schemaJson?: object;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  schemaJson?: object | object[];
 }
 
 export function SEOHead({
   title = 'Maharashtra Trails | Trekking and Nature Travel Guides',
   description = 'Discover trekking places in Maharashtra, historic hill forts, scenic waterfalls and nature trails with practical travel guides and trekking tips.',
-  canonicalUrl,
+  canonicalPath,
+  ogImage,
+  ogType = 'website',
   schemaJson
 }: SEOProps) {
   useEffect(() => {
-    // Update Document Title
+    // 1. Update Document Title
     document.title = title;
 
-    // Update Meta Description
+    // 2. Resolve Canonical URL
+    const siteOrigin =
+      (import.meta.env.VITE_SITE_URL as string | undefined) ||
+      (typeof window !== 'undefined' ? window.location.origin : 'https://maharatsraheritages.vercel.app');
+
+    const cleanPath = canonicalPath
+      ? canonicalPath.startsWith('/')
+        ? canonicalPath
+        : `/${canonicalPath}`
+      : typeof window !== 'undefined'
+      ? window.location.pathname
+      : '/';
+
+    const fullCanonicalUrl = `${siteOrigin.replace(/\/$/, '')}${cleanPath === '/' ? '' : cleanPath}`;
+
+    // 3. Update Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -26,42 +45,89 @@ export function SEOHead({
     }
     metaDesc.setAttribute('content', description);
 
-    // Update OpenGraph Title & Description
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
+    // 4. Update Robots Meta Tag (ensure indexable)
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
 
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', description);
+    // 5. Update Canonical Tag
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', fullCanonicalUrl);
 
-    // Update Canonical
-    if (canonicalUrl) {
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
+    // 6. Update OpenGraph Tags
+    const updateOrCreateMeta = (property: string, content: string) => {
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', property);
+        document.head.appendChild(el);
       }
-      canonical.setAttribute('href', canonicalUrl);
+      el.setAttribute('content', content);
+    };
+
+    updateOrCreateMeta('og:title', title);
+    updateOrCreateMeta('og:description', description);
+    updateOrCreateMeta('og:type', ogType);
+    updateOrCreateMeta('og:url', fullCanonicalUrl);
+    updateOrCreateMeta('og:site_name', 'Maharashtra Trails');
+
+    if (ogImage) {
+      const fullImg = ogImage.startsWith('http') ? ogImage : `${siteOrigin.replace(/\/$/, '')}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+      updateOrCreateMeta('og:image', fullImg);
+      updateOrCreateMeta('twitter:image', fullImg);
     }
 
-    // Dynamic Schema.org JSON-LD
-    let scriptTag: HTMLScriptElement | null = null;
+    // 7. Update Twitter Tags
+    const updateOrCreateTwitterMeta = (name: string, content: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('name', name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    updateOrCreateTwitterMeta('twitter:title', title);
+    updateOrCreateTwitterMeta('twitter:description', description);
+    updateOrCreateTwitterMeta('twitter:card', 'summary_large_image');
+
+    // 8. Dynamic Schema.org JSON-LD injection
+    const existing = document.getElementById('dynamic-page-schema');
+    if (existing) existing.remove();
+
     if (schemaJson) {
-      scriptTag = document.createElement('script');
+      const scriptTag = document.createElement('script');
       scriptTag.type = 'application/ld+json';
-      scriptTag.text = JSON.stringify(schemaJson);
       scriptTag.id = 'dynamic-page-schema';
-      // Remove any previous dynamic schema
-      const existing = document.getElementById('dynamic-page-schema');
-      if (existing) existing.remove();
+
+      // If array of schemas, wrap into @graph
+      if (Array.isArray(schemaJson)) {
+        scriptTag.text = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': schemaJson
+        });
+      } else {
+        scriptTag.text = JSON.stringify(schemaJson);
+      }
+
       document.head.appendChild(scriptTag);
     }
 
     return () => {
-      const existing = document.getElementById('dynamic-page-schema');
-      if (existing) existing.remove();
+      const script = document.getElementById('dynamic-page-schema');
+      if (script) script.remove();
     };
-  }, [title, description, canonicalUrl, schemaJson]);
+  }, [title, description, canonicalPath, ogImage, ogType, schemaJson]);
 
   return null;
 }

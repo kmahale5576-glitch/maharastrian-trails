@@ -26,21 +26,21 @@ export default function App() {
       return <HomePage navigate={navigate} />;
     }
 
-    if (cleanPath === '/destinations') {
+    if (cleanPath === '/destinations' || cleanPath === '/trails') {
       return <DestinationsPage navigate={navigate} />;
     }
 
-    if (cleanPath.startsWith('/destination/')) {
-      const slug = cleanPath.replace('/destination/', '');
+    if (cleanPath.startsWith('/destination/') || cleanPath.startsWith('/trail/')) {
+      const slug = cleanPath.replace(/^\/(destination|trail)\//, '');
       return <DestinationDetailPage slug={slug} navigate={navigate} />;
     }
 
-    if (cleanPath === '/blogs') {
+    if (cleanPath === '/blogs' || cleanPath === '/guides') {
       return <BlogsPage navigate={navigate} />;
     }
 
-    if (cleanPath.startsWith('/blog/')) {
-      const slug = cleanPath.replace('/blog/', '');
+    if (cleanPath.startsWith('/blog/') || cleanPath.startsWith('/guide/')) {
+      const slug = cleanPath.replace(/^\/(blog|guide)\//, '');
       return <BlogDetailPage slug={slug} navigate={navigate} />;
     }
 

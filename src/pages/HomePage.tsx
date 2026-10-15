@@ -74,12 +74,32 @@ export function HomePage({ navigate }: HomePageProps) {
     }
   ];
 
+  const homeSchema = useMemo(() => {
+    return [
+      {
+        '@type': 'WebSite',
+        name: 'Maharashtra Trails',
+        alternateName: 'Maharashtra Sahyadri Trails & Forts',
+        description: 'Comprehensive field guide to 16 trekking destinations, historic Maratha hill forts, and waterfall trails across the Western Ghats.',
+        inLanguage: 'en'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Maharashtra Trails',
+        description: 'Field guide publication and conservation initiative dedicated to documenting the Sahyadri mountains of Maharashtra, India.',
+        logo: '/og-preview.jpg'
+      }
+    ];
+  }, []);
+
   return (
     <div className="min-h-screen">
       <SEOHead
         title="Maharashtra Trails | Trekking and Nature Travel Guides"
         description="Discover trekking places in Maharashtra, historic hill forts, scenic waterfalls and nature trails with practical travel guides and trekking tips."
-        canonicalUrl="https://maharashtratrails.com/"
+        canonicalPath="/"
+        ogImage="/og-preview.jpg"
+        schemaJson={homeSchema}
       />
 
       {/* Hero Section */}

@@ -61,33 +61,72 @@ export function BlogDetailPage({ slug, navigate }: BlogDetailPageProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: article.title,
-    description: article.metaDescription,
-    image: article.image,
-    datePublished: article.publishDate,
-    author: {
-      '@type': 'Organization',
-      name: article.author
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Maharashtra Trails'
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://maharashtratrails.com/blog/${article.slug}`
-    }
-  };
+  const schemaJson = useMemo(() => {
+    return [
+      {
+        '@type': 'BlogPosting',
+        headline: article.title,
+        description: article.metaDescription,
+        image: article.image,
+        datePublished: article.publishDate,
+        author: {
+          '@type': 'Organization',
+          name: article.author
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Maharashtra Trails'
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': typeof window !== 'undefined' ? `${window.location.origin}/blog/${article.slug}` : `/blog/${article.slug}`
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: typeof window !== 'undefined' ? window.location.origin : ''
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Trekking Guides',
+            item: typeof window !== 'undefined' ? `${window.location.origin}/blogs` : '/blogs'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: typeof window !== 'undefined' ? `${window.location.origin}/blog/${article.slug}` : `/blog/${article.slug}`
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: article.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      }
+    ];
+  }, [article]);
 
   return (
     <article className="min-h-screen py-8 sm:py-12 bg-[#FBF9F5]">
       <SEOHead
         title={`${article.seoTitle} | Maharashtra Trails`}
         description={article.metaDescription}
-        canonicalUrl={`https://maharashtratrails.com/blog/${article.slug}`}
+        canonicalPath={`/blog/${article.slug}`}
+        ogImage={article.image}
+        ogType="article"
         schemaJson={schemaJson}
       />
 

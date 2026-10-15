@@ -62,30 +62,69 @@ export function DestinationDetailPage({ slug, navigate }: DestinationDetailPageP
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'TouristDestination',
-    name: destination.name,
-    description: destination.overview,
-    touristType: destination.type,
-    geo: {
-      '@type': 'GeoCoordinates',
-      addressCountry: 'IN',
-      addressRegion: destination.district + ', Maharashtra'
-    },
-    includesAttraction: {
-      '@type': 'TouristAttraction',
-      name: destination.name,
-      description: destination.tagline
-    }
-  };
+  const schemaJson = useMemo(() => {
+    return [
+      {
+        '@type': 'TouristDestination',
+        name: destination.name,
+        description: destination.overview,
+        touristType: destination.type,
+        geo: {
+          '@type': 'GeoCoordinates',
+          addressCountry: 'IN',
+          addressRegion: `${destination.district}, Maharashtra`
+        },
+        includesAttraction: {
+          '@type': 'TouristAttraction',
+          name: destination.name,
+          description: destination.tagline
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: typeof window !== 'undefined' ? window.location.origin : ''
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Destinations',
+            item: typeof window !== 'undefined' ? `${window.location.origin}/destinations` : '/destinations'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: destination.name,
+            item: typeof window !== 'undefined' ? `${window.location.origin}/destination/${destination.slug}` : `/destination/${destination.slug}`
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: destination.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      }
+    ];
+  }, [destination]);
 
   return (
     <article className="min-h-screen py-8 sm:py-12 bg-[#FBF9F5]">
       <SEOHead
         title={`${destination.name} Trek Guide: Route, Difficulty & Best Time | Maharashtra Trails`}
         description={destination.overview.slice(0, 155)}
-        canonicalUrl={`https://maharashtratrails.com/destination/${destination.slug}`}
+        canonicalPath={`/destination/${destination.slug}`}
+        ogImage={destination.image}
+        ogType="article"
         schemaJson={schemaJson}
       />
 

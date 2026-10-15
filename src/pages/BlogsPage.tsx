@@ -26,12 +26,31 @@ export function BlogsPage({ navigate }: BlogsPageProps) {
     });
   }, [selectedCategory, searchQuery]);
 
+  const guidesSchema = useMemo(() => {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Maharashtra Trekking Guides & Travel Advice',
+      description: 'Collection of 10 comprehensive field guides on Sahyadri mountain trekking, monsoon safety, and fort heritage.',
+      numberOfItems: BLOGS.length,
+      itemListElement: BLOGS.map((b, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: b.title,
+        description: b.excerpt,
+        url: typeof window !== 'undefined' ? `${window.location.origin}/blog/${b.slug}` : `/blog/${b.slug}`
+      }))
+    };
+  }, []);
+
   return (
     <div className="min-h-screen py-10 sm:py-14 bg-[#FBF9F5]">
       <SEOHead
         title="Trekking Guides & Blogs | Maharashtra Trails Field Knowledge"
         description="10 in-depth trekking guides covering Kalsubai routes, monsoon safety, Maratha fort history, packing essentials, and weekend escapes near Mumbai and Pune."
-        canonicalUrl="https://maharashtratrails.com/blogs"
+        canonicalPath="/blogs"
+        ogImage="/og-preview.jpg"
+        schemaJson={guidesSchema}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

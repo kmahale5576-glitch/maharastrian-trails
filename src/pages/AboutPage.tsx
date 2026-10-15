@@ -6,12 +6,33 @@ interface AboutPageProps {
 }
 
 export function AboutPage({ navigate }: AboutPageProps) {
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: typeof window !== 'undefined' ? window.location.origin : ''
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About',
+        item: typeof window !== 'undefined' ? `${window.location.origin}/about` : '/about'
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen py-10 sm:py-14 bg-[#FBF9F5]">
       <SEOHead
         title="About Maharashtra Trails | Sahyadri Mountain & Fort Heritage"
         description="Learn about Maharashtra Trails, dedicated to celebrating the Western Ghats (Sahyadris), 350+ historic Maratha hill fortresses, and responsible nature exploration."
-        canonicalUrl="https://maharashtratrails.com/about"
+        canonicalPath="/about"
+        ogImage="/og-preview.jpg"
+        schemaJson={aboutSchema}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

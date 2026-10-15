@@ -47,12 +47,31 @@ export function DestinationsPage({ navigate }: DestinationsPageProps) {
     });
   }, [selectedType, selectedDifficulty, selectedDistrict, searchQuery]);
 
+  const catalogSchema = useMemo(() => {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '16 Trekking Destinations in Maharashtra',
+      description: 'Directory of major mountain peaks, hill fortresses, and waterfall trails across the Sahyadri Western Ghats.',
+      numberOfItems: DESTINATIONS.length,
+      itemListElement: DESTINATIONS.map((d, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: d.name,
+        description: d.tagline,
+        url: typeof window !== 'undefined' ? `${window.location.origin}/destination/${d.slug}` : `/destination/${d.slug}`
+      }))
+    };
+  }, []);
+
   return (
     <div className="min-h-screen py-10 sm:py-14 bg-[#FBF9F5]">
       <SEOHead
         title="16 Trekking Destinations in Maharashtra | Forts, Summits & Waterfalls"
         description="Comprehensive directory of 16 trekking places across Maharashtra Sahyadris: Kalsubai, Harishchandragad, Harihar, Devkund, Raigad, Rajgad, and more."
-        canonicalUrl="https://maharashtratrails.com/destinations"
+        canonicalPath="/destinations"
+        ogImage="/og-preview.jpg"
+        schemaJson={catalogSchema}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

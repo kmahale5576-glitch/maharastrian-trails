@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maharashtratrails.com/sitemap.xml
+Sitemap: https://maharatsraheritages.vercel.app/sitemap.xml
