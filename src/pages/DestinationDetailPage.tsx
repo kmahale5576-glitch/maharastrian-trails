@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { DESTINATIONS } from '../data/destinations';
 import { BLOGS } from '../data/blogs';
 import { SEOHead } from '../components/SEOHead';
@@ -25,11 +25,31 @@ interface DestinationDetailPageProps {
 export function DestinationDetailPage({ slug, navigate }: DestinationDetailPageProps) {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [copied, setCopied] = useState(false);
-  const [imgError, setImgError] = useState(false);
 
   const destination = useMemo(() => {
     return DESTINATIONS.find((d) => d.slug === slug);
   }, [slug]);
+
+  const [imgSrc, setImgSrc] = useState(destination?.image || '');
+  const [hasTriedFallback, setHasTriedFallback] = useState(false);
+  const [isCompletelyFailed, setIsCompletelyFailed] = useState(false);
+
+  useEffect(() => {
+    if (destination) {
+      setImgSrc(destination.image);
+      setHasTriedFallback(false);
+      setIsCompletelyFailed(false);
+    }
+  }, [destination]);
+
+  const handleImageError = () => {
+    if (destination?.fallbackImage && !hasTriedFallback && imgSrc !== destination.fallbackImage) {
+      setHasTriedFallback(true);
+      setImgSrc(destination.fallbackImage);
+    } else {
+      setIsCompletelyFailed(true);
+    }
+  };
 
   if (!destination) {
     return (
@@ -184,18 +204,19 @@ export function DestinationDetailPage({ slug, navigate }: DestinationDetailPageP
 
         {/* Main Hero Photograph */}
         <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm mb-8">
-          {!imgError ? (
+          {!isCompletelyFailed ? (
             <img
-              src={destination.image}
+              src={imgSrc}
               alt={destination.imageAlt || destination.name}
               referrerPolicy="no-referrer"
-              onError={() => setImgError(true)}
+              onError={handleImageError}
               className="w-full h-full object-cover"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-stone-100 text-center">
-              <Mountain className="w-12 h-12 text-stone-400 mb-2" />
-              <div className="font-serif text-lg font-bold text-stone-700">{destination.name}</div>
+              <Mountain className="w-12 h-12 text-emerald-800/60 mb-2" />
+              <div className="font-serif text-lg font-bold text-stone-800">{destination.name}</div>
+              <div className="text-xs text-stone-500 mt-1">{destination.district} · {destination.elevation}</div>
             </div>
           )}
           <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-xs text-white text-xs px-3 py-1 rounded">

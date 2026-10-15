@@ -24,6 +24,7 @@ export interface Destination {
   baseVillage: string;
   coordinates?: string;
   image: string;
+  fallbackImage?: string;
   imageAlt: string;
   overview: string;
   historicalSignificance: string;
@@ -46,6 +47,7 @@ export interface BlogArticle {
   publishDate: string;
   author: string;
   image: string;
+  fallbackImage?: string;
   imageAlt: string;
   excerpt: string;
   content: {

@@ -1,4 +1,5 @@
 import { BlogArticle } from '../types';
+import { BLOG_IMAGE_MAP } from './images';
 
 export const BLOGS: BlogArticle[] = [
   {
@@ -11,7 +12,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '9 min read',
     publishDate: 'October 12, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/hero_sahyadri_mountains_1792084153006.jpg',
+    image: BLOG_IMAGE_MAP['best-trekking-places-maharashtra'].image,
+    fallbackImage: BLOG_IMAGE_MAP['best-trekking-places-maharashtra'].fallback,
     imageAlt: 'Panoramic vista of Maharashtra Western Ghats Sahyadri mountain ridges draped in monsoon clouds',
     excerpt: 'A definitive overview of the most awe-inspiring trekking destinations across Maharashtra\'s Sahyadri range, organized by region, difficulty, and scenic grandeur.',
     content: {
@@ -83,7 +85,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '8 min read',
     publishDate: 'October 8, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_kalsubai_peak_1792084153510.jpg',
+    image: BLOG_IMAGE_MAP['kalsubai-trek-route-difficulty-prep'].image,
+    fallbackImage: BLOG_IMAGE_MAP['kalsubai-trek-route-difficulty-prep'].fallback,
     imageAlt: 'High-altitude sunrise over cloud layers from the peak ridge of Kalsubai in Maharashtra',
     excerpt: 'Detailed logistical breakdown for scaling Maharashtra\'s highest mountain summit, covering the Bari trail, steel ladders, fitness requirements, and seasonal considerations.',
     content: {
@@ -142,7 +145,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '10 min read',
     publishDate: 'September 28, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_harishchandragad_cliff_1792084153712.jpg',
+    image: BLOG_IMAGE_MAP['monsoon-treks-maharashtra-safety'].image,
+    fallbackImage: BLOG_IMAGE_MAP['monsoon-treks-maharashtra-safety'].fallback,
     imageAlt: 'Swirling monsoon clouds and water cascades over steep basalt rock faces in Maharashtra',
     excerpt: 'Comprehensive monsoon hiking safety protocols: reading flash flood warnings, footwear selection for wet basalt, hypothermia prevention, and emergency planning.',
     content: {
@@ -200,7 +204,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '9 min read',
     publishDate: 'September 15, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_harihar_steps_1792084154843.jpg',
+    image: BLOG_IMAGE_MAP['best-fort-treks-maharashtra-heritage'].image,
+    fallbackImage: BLOG_IMAGE_MAP['best-fort-treks-maharashtra-heritage'].fallback,
     imageAlt: 'Ancient carved stone gateway and defensive fortifications of a Maharashtra hill fort',
     excerpt: 'An architectural and historical exploration of the hill forts built and fortified by Chhatrapati Shivaji Maharaj and the Peshwas across the Sahyadri mountains.',
     content: {
@@ -256,7 +261,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '7 min read',
     publishDate: 'August 30, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_devkund_waterfall_1792084154902.jpg',
+    image: BLOG_IMAGE_MAP['trekking-places-near-mumbai'].image,
+    fallbackImage: BLOG_IMAGE_MAP['trekking-places-near-mumbai'].fallback,
     imageAlt: 'Crystal clear emerald waterfall pool surrounded by lush rainforest canopy near Mumbai',
     excerpt: 'The ultimate weekend trail guide for Mumbai residents seeking rapid escapes from urban concrete into scenic mist-shrouded peaks and lush forest trails.',
     content: {
@@ -314,7 +320,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '8 min read',
     publishDate: 'August 14, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/hero_sahyadri_mountains_1792084153006.jpg',
+    image: BLOG_IMAGE_MAP['trekking-places-near-pune'].image,
+    fallbackImage: BLOG_IMAGE_MAP['trekking-places-near-pune'].fallback,
     imageAlt: 'Sunrise over rolling mountain ridges and ancient fortifications near Pune Maharashtra',
     excerpt: 'An insider\'s guide to the finest trekking destinations around Pune, from quick early-morning hill scrambles to epic range traverses across historical bastions.',
     content: {
@@ -370,7 +377,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '7 min read',
     publishDate: 'July 22, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_kalsubai_peak_1792084153510.jpg',
+    image: BLOG_IMAGE_MAP['beginners-guide-sahyadri-trekking'].image,
+    fallbackImage: BLOG_IMAGE_MAP['beginners-guide-sahyadri-trekking'].fallback,
     imageAlt: 'A group of hikers with backpacks ascending a scenic mountain trail in Maharashtra',
     excerpt: 'Step-by-step roadmap for first-time hikers in Maharashtra: building baseline stamina, selecting the right beginner peaks, and mastering trail basics.',
     content: {
@@ -432,7 +440,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '8 min read',
     publishDate: 'July 10, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_harihar_steps_1792084154843.jpg',
+    image: BLOG_IMAGE_MAP['essential-trekking-gear-western-ghats'].image,
+    fallbackImage: BLOG_IMAGE_MAP['essential-trekking-gear-western-ghats'].fallback,
     imageAlt: 'Essential hiking equipment including boots, rucksack, water bladder, and headlamp',
     excerpt: 'A tested packing checklist tailored specifically for the rugged volcanic basalt, heavy monsoon downpours, and intense sun of Maharashtra mountains.',
     content: {
@@ -495,7 +504,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '7 min read',
     publishDate: 'June 25, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/dest_devkund_waterfall_1792084154902.jpg',
+    image: BLOG_IMAGE_MAP['waterfalls-nature-trails-maharashtra'].image,
+    fallbackImage: BLOG_IMAGE_MAP['waterfalls-nature-trails-maharashtra'].fallback,
     imageAlt: 'Roaring waterfall cascade plunging into a deep natural turquoise pool in Maharashtra',
     excerpt: 'Explore Maharashtra\'s most breathtaking cascades, crystal plunge pools, and biodiversity-rich nature sanctuaries tucked deep within the Western Ghats.',
     content: {
@@ -549,7 +559,8 @@ export const BLOGS: BlogArticle[] = [
     readTime: '6 min read',
     publishDate: 'June 10, 2026',
     author: 'Maharashtra Trails Editorial',
-    image: '/src/assets/images/hero_sahyadri_mountains_1792084153006.jpg',
+    image: BLOG_IMAGE_MAP['responsible-trekking-leave-no-trace'].image,
+    fallbackImage: BLOG_IMAGE_MAP['responsible-trekking-leave-no-trace'].fallback,
     imageAlt: 'Pristine untouched mountain peaks and green slopes of the Sahyadris under clear skies',
     excerpt: 'A passionate call to preserve the sacred heritage and pristine biodiversity of the Sahyadri mountains for generations of future adventurers.',
     content: {

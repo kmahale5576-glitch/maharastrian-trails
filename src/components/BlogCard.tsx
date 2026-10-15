@@ -9,7 +9,18 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ article, onSelect, featured = false }: BlogCardProps) {
-  const [imgError, setImgError] = useState(false);
+  const [imgSrc, setImgSrc] = useState(article.image);
+  const [hasTriedFallback, setHasTriedFallback] = useState(false);
+  const [isCompletelyFailed, setIsCompletelyFailed] = useState(false);
+
+  const handleImageError = () => {
+    if (article.fallbackImage && !hasTriedFallback && imgSrc !== article.fallbackImage) {
+      setHasTriedFallback(true);
+      setImgSrc(article.fallbackImage);
+    } else {
+      setIsCompletelyFailed(true);
+    }
+  };
 
   if (featured) {
     return (
@@ -18,19 +29,20 @@ export function BlogCard({ article, onSelect, featured = false }: BlogCardProps)
         className="group cursor-pointer bg-white rounded-xl border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 grid grid-cols-1 lg:grid-cols-12 items-stretch"
       >
         <div className="relative aspect-16/9 lg:aspect-auto lg:h-full lg:col-span-7 bg-stone-100 overflow-hidden min-h-[260px]">
-          {!imgError ? (
+          {!isCompletelyFailed ? (
             <img
-              src={article.image}
+              src={imgSrc}
               alt={article.imageAlt || article.title}
               referrerPolicy="no-referrer"
               loading="lazy"
-              onError={() => setImgError(true)}
+              onError={handleImageError}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 p-6 text-center">
-              <BookOpen className="w-10 h-10 text-stone-400 mb-2" />
-              <span className="text-sm font-medium text-stone-600">{article.title}</span>
+              <BookOpen className="w-10 h-10 text-emerald-800/60 mb-2" />
+              <span className="font-serif text-sm font-bold text-stone-800">{article.title}</span>
+              <span className="text-[11px] text-stone-500 mt-1">{article.category} · {article.readTime}</span>
             </div>
           )}
           <div className="absolute top-3 left-3 bg-[#16382B] text-white text-[11px] font-medium px-2.5 py-1 rounded-sm uppercase tracking-wider">
@@ -79,19 +91,20 @@ export function BlogCard({ article, onSelect, featured = false }: BlogCardProps)
     >
       <div>
         <div className="relative aspect-16/10 w-full bg-stone-100 overflow-hidden">
-          {!imgError ? (
+          {!isCompletelyFailed ? (
             <img
-              src={article.image}
+              src={imgSrc}
               alt={article.imageAlt || article.title}
               referrerPolicy="no-referrer"
               loading="lazy"
-              onError={() => setImgError(true)}
+              onError={handleImageError}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 p-4 text-center">
-              <BookOpen className="w-8 h-8 text-stone-400 mb-2" />
-              <span className="text-xs font-medium text-stone-600">{article.title}</span>
+              <BookOpen className="w-8 h-8 text-emerald-800/60 mb-2" />
+              <span className="font-serif text-xs font-bold text-stone-800 line-clamp-2">{article.title}</span>
+              <span className="text-[10px] text-stone-500 mt-1">{article.category} · {article.readTime}</span>
             </div>
           )}
 

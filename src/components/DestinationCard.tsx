@@ -8,7 +8,18 @@ interface DestinationCardProps {
 }
 
 export function DestinationCard({ destination, onSelect }: DestinationCardProps) {
-  const [imgError, setImgError] = useState(false);
+  const [imgSrc, setImgSrc] = useState(destination.image);
+  const [hasTriedFallback, setHasTriedFallback] = useState(false);
+  const [isCompletelyFailed, setIsCompletelyFailed] = useState(false);
+
+  const handleImageError = () => {
+    if (destination.fallbackImage && !hasTriedFallback && imgSrc !== destination.fallbackImage) {
+      setHasTriedFallback(true);
+      setImgSrc(destination.fallbackImage);
+    } else {
+      setIsCompletelyFailed(true);
+    }
+  };
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
@@ -34,19 +45,20 @@ export function DestinationCard({ destination, onSelect }: DestinationCardProps)
       <div>
         {/* Card Image Container */}
         <div className="relative aspect-4/3 w-full bg-stone-100 overflow-hidden">
-          {!imgError ? (
+          {!isCompletelyFailed ? (
             <img
-              src={destination.image}
+              src={imgSrc}
               alt={destination.imageAlt || destination.name}
               referrerPolicy="no-referrer"
               loading="lazy"
-              onError={() => setImgError(true)}
+              onError={handleImageError}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 p-4 text-center">
-              <Mountain className="w-8 h-8 text-stone-400 mb-2" />
-              <span className="text-xs font-medium text-stone-600">{destination.name}</span>
+              <Mountain className="w-8 h-8 text-emerald-800/60 mb-2" />
+              <span className="font-serif text-sm font-bold text-stone-800">{destination.name}</span>
+              <span className="text-[11px] text-stone-500 mt-0.5">{destination.district} · {destination.elevation}</span>
             </div>
           )}
 

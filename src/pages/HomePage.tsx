@@ -4,6 +4,7 @@ import { BLOGS } from '../data/blogs';
 import { DestinationCard } from '../components/DestinationCard';
 import { BlogCard } from '../components/BlogCard';
 import { SEOHead } from '../components/SEOHead';
+import { HERO_IMAGE, HERO_FALLBACK } from '../data/images';
 import { Compass, ArrowRight, Shield, Mountain, Droplets, Castle, ChevronDown, ChevronUp, Search, Filter } from 'lucide-react';
 
 interface HomePageProps {
@@ -107,10 +108,16 @@ export function HomePage({ navigate }: HomePageProps) {
         {/* Background Image with Measured Contrast Scrim */}
         <div className="absolute inset-0">
           <img
-            src="/src/assets/images/hero_sahyadri_mountains_1792084153006.jpg"
+            src={HERO_IMAGE}
             alt="Misty peaks and deep green volcanic ridges of the Sahyadri mountains in Maharashtra"
             className="w-full h-full object-cover object-center"
             fetchPriority="high"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== HERO_FALLBACK && !target.src.endsWith(HERO_FALLBACK)) {
+                target.src = HERO_FALLBACK;
+              }
+            }}
           />
           {/* Measured Scrim for WCAG AA Contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0E2018] via-[#0E2018]/65 to-[#0E2018]/30" />
