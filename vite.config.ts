@@ -13,8 +13,9 @@ export default defineConfig(() => {
         name: 'serve-gsc-verification',
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
-            if (req.url === '/google68aad1a048934c4b.html') {
-              const filePath = path.resolve(import.meta.dirname, 'public/google68aad1a048934c4b.html');
+            if (req.url?.startsWith('/google') && req.url?.endsWith('.html')) {
+              const fileName = path.basename(req.url);
+              const filePath = path.resolve(import.meta.dirname, 'public', fileName);
               if (fs.existsSync(filePath)) {
                 res.setHeader('Content-Type', 'text/html; charset=utf-8');
                 res.end(fs.readFileSync(filePath, 'utf-8'));
