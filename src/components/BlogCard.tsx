@@ -32,7 +32,9 @@ export function BlogCard({ article, onSelect, featured = false }: BlogCardProps)
           {!isCompletelyFailed ? (
             <img
               src={imgSrc}
-              alt={article.imageAlt || article.title}
+              alt={article.imageAlt || `${article.title} - Maharashtra Trails Trekking Guide`}
+              width={700}
+              height={394}
               referrerPolicy="no-referrer"
               loading="lazy"
               onError={handleImageError}
@@ -94,7 +96,9 @@ export function BlogCard({ article, onSelect, featured = false }: BlogCardProps)
           {!isCompletelyFailed ? (
             <img
               src={imgSrc}
-              alt={article.imageAlt || article.title}
+              alt={article.imageAlt || `${article.title} - Maharashtra Trails Guide`}
+              width={640}
+              height={400}
               referrerPolicy="no-referrer"
               loading="lazy"
               onError={handleImageError}

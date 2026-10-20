@@ -207,7 +207,10 @@ export function DestinationDetailPage({ slug, navigate }: DestinationDetailPageP
           {!isCompletelyFailed ? (
             <img
               src={imgSrc}
-              alt={destination.imageAlt || destination.name}
+              alt={destination.imageAlt || `${destination.name} trek in ${destination.district} Maharashtra`}
+              width={1200}
+              height={675}
+              loading="lazy"
               referrerPolicy="no-referrer"
               onError={handleImageError}
               className="w-full h-full object-cover"

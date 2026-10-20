@@ -48,7 +48,9 @@ export function DestinationCard({ destination, onSelect }: DestinationCardProps)
           {!isCompletelyFailed ? (
             <img
               src={imgSrc}
-              alt={destination.imageAlt || destination.name}
+              alt={destination.imageAlt || `${destination.name} trek in ${destination.district} Maharashtra`}
+              width={640}
+              height={480}
               referrerPolicy="no-referrer"
               loading="lazy"
               onError={handleImageError}

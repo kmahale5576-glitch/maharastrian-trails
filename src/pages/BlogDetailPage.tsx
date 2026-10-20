@@ -188,7 +188,10 @@ export function BlogDetailPage({ slug, navigate }: BlogDetailPageProps) {
           {!imgError ? (
             <img
               src={article.image}
-              alt={article.imageAlt || article.title}
+              alt={article.imageAlt || `${article.title} - Maharashtra Trails Trekking Guide`}
+              width={1200}
+              height={675}
+              loading="lazy"
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
               className="w-full h-full object-cover"

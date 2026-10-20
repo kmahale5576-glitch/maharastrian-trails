@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core pages -->
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destinations</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destinations</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blogs</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blogs</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/about</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/about</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -28,97 +28,97 @@
 
   <!-- 16 Destinations -->
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/kalsubai-peak</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/kalsubai-peak</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/harishchandragad</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/harishchandragad</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/harihar-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/harihar-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/devkund-waterfall</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/devkund-waterfall</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/rajmachi-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/rajmachi-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/torna-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/torna-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/raigad-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/raigad-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/sinhagad-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/sinhagad-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/lohagad-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/lohagad-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/visapur-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/visapur-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/ratangad-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/ratangad-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/sandhan-valley</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/sandhan-valley</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/rajgad-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/rajgad-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/kalavantin-durg</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/kalavantin-durg</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/alang-madan-kulang</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/alang-madan-kulang</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/destination/vasota-fort</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/destination/vasota-fort</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -126,61 +126,61 @@
 
   <!-- 10 Detailed Trekking Guides & Travel Articles -->
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/best-trekking-places-maharashtra</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/best-trekking-places-maharashtra</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/kalsubai-trek-route-difficulty-prep</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/kalsubai-trek-route-difficulty-prep</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/monsoon-treks-maharashtra-safety</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/monsoon-treks-maharashtra-safety</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/best-fort-treks-maharashtra-heritage</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/best-fort-treks-maharashtra-heritage</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/trekking-places-near-mumbai</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/trekking-places-near-mumbai</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/trekking-places-near-pune</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/trekking-places-near-pune</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/beginners-guide-sahyadri-trekking</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/beginners-guide-sahyadri-trekking</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/essential-trekking-gear-western-ghats</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/essential-trekking-gear-western-ghats</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/waterfalls-nature-trails-maharashtra</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/waterfalls-nature-trails-maharashtra</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://maharashtrian-trails-zyv4.vercel.app/blog/responsible-trekking-leave-no-trace</loc>
+    <loc>https://maharastrian-trails-zyv4.vercel.app/blog/responsible-trekking-leave-no-trace</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

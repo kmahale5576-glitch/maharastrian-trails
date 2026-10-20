@@ -112,6 +112,8 @@ export function HomePage({ navigate }: HomePageProps) {
             alt="Misty peaks and deep green volcanic ridges of the Sahyadri mountains in Maharashtra"
             className="w-full h-full object-cover object-center"
             fetchPriority="high"
+            width={1200}
+            height={675}
             onError={(e) => {
               const target = e.currentTarget;
               if (target.src !== HERO_FALLBACK && !target.src.endsWith(HERO_FALLBACK)) {

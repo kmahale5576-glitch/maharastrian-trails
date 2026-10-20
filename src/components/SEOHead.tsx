@@ -26,7 +26,7 @@ export function SEOHead({
       (import.meta.env.VITE_SITE_URL as string | undefined) ||
       (typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost')
         ? window.location.origin
-        : 'https://maharashtrian-trails-zyv4.vercel.app');
+        : 'https://maharastrian-trails-zyv4.vercel.app');
 
     const cleanPath = canonicalPath
       ? canonicalPath.startsWith('/')
