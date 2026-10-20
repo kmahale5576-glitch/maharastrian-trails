@@ -24,7 +24,9 @@ export function SEOHead({
     // 2. Resolve Canonical URL
     const siteOrigin =
       (import.meta.env.VITE_SITE_URL as string | undefined) ||
-      (typeof window !== 'undefined' ? window.location.origin : 'https://maharatsraheritages.vercel.app');
+      (typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost')
+        ? window.location.origin
+        : 'https://maharashtrian-trails-zyv4.vercel.app');
 
     const cleanPath = canonicalPath
       ? canonicalPath.startsWith('/')
@@ -80,11 +82,12 @@ export function SEOHead({
     updateOrCreateMeta('og:url', fullCanonicalUrl);
     updateOrCreateMeta('og:site_name', 'Maharashtra Trails');
 
-    if (ogImage) {
-      const fullImg = ogImage.startsWith('http') ? ogImage : `${siteOrigin.replace(/\/$/, '')}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
-      updateOrCreateMeta('og:image', fullImg);
-      updateOrCreateMeta('twitter:image', fullImg);
-    }
+    const defaultOgImage = `${siteOrigin.replace(/\/$/, '')}/og-preview.jpg`;
+    const fullImg = ogImage
+      ? (ogImage.startsWith('http') ? ogImage : `${siteOrigin.replace(/\/$/, '')}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`)
+      : defaultOgImage;
+
+    updateOrCreateMeta('og:image', fullImg);
 
     // 7. Update Twitter Tags
     const updateOrCreateTwitterMeta = (name: string, content: string) => {
@@ -100,6 +103,7 @@ export function SEOHead({
     updateOrCreateTwitterMeta('twitter:title', title);
     updateOrCreateTwitterMeta('twitter:description', description);
     updateOrCreateTwitterMeta('twitter:card', 'summary_large_image');
+    updateOrCreateTwitterMeta('twitter:image', fullImg);
 
     // 8. Dynamic Schema.org JSON-LD injection
     const existing = document.getElementById('dynamic-page-schema');
